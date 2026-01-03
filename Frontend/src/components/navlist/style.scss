@@ -1,0 +1,399 @@
+// Desktop View
+.navlist-container {
+    display: flex;
+    gap: 10px;
+    background-color: gray;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+    flex-wrap: wrap;
+
+    .list-item-container {
+        position: relative;
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        align-items: center;
+        padding: 8px 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 4px;
+        border-bottom: 4px solid transparent;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        &.active {
+            border-bottom-color: #007bdd;
+        }
+
+        .navlist-item {
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: #333;
+            }
+        }
+
+        .expand-icon {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+
+            &.rotated {
+                transform: rotate(180deg);
+            }
+        }
+
+        // Submenu dropdown
+        .submenu-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            padding: 8px 0;
+            margin-top: 4px;
+            z-index: 100;
+            animation: slideDown 0.3s ease;
+
+            .submenu-item {
+                display: block;
+                padding: 10px 16px;
+                text-decoration: none;
+                color: #333;
+                font-size: 14px;
+                font-weight: 400;
+                transition: all 0.2s ease;
+                white-space: nowrap;
+
+                &:hover {
+                    background-color: #f0f0f0;
+                    padding-left: 20px;
+                }
+            }
+        }
+    }
+}
+
+// Mobile View
+.navlist-container-mobile {
+    display: none;
+    background-color: gray;
+    padding: 12px;
+
+    @media (max-width: 767px) {
+        display: block;
+    }
+
+    .breadcrumb-container {
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 12px;
+
+        .menu-icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+
+            &:hover {
+                color: #000;
+                transform: scale(1.1);
+            }
+
+            svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        .breadcrumb-item {
+            color: #333;
+            font-size: 14px;
+            font-weight: 600;
+
+            &.active {
+                color: #000;
+                font-weight: 700;
+            }
+        }
+    }
+
+    // Flyout overlay
+    .flyout-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        animation: fadeIn 0.3s ease;
+    }
+
+    // Flyout menu
+    .flyout-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 75%;
+        max-width: 300px;
+        background-color: #fff;
+        z-index: 999;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+        overflow-y: auto;
+
+        &.active {
+            transform: translateX(0);
+        }
+
+        .flyout-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid #ddd;
+            background-color: gray;
+            position: sticky;
+            top: 0;
+
+            span {
+                font-size: 16px;
+                font-weight: 700;
+                color: #000;
+            }
+
+            .close-btn {
+                background: none;
+                border: none;
+                cursor: pointer;
+                color: #333;
+                padding: 4px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    color: #000;
+                    transform: rotate(90deg);
+                }
+
+                svg {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+
+        .flyout-content {
+            padding: 0;
+
+            .flyout-item {
+                border-bottom: 1px solid #eee;
+
+                .flyout-header-item {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 14px 16px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    background-color: #fafafa;
+
+                    &:hover {
+                        background-color: #f0f0f0;
+                    }
+
+                    &.expanded {
+                        background-color: #e8e8e8;
+                        border-bottom-color: #007bdd;
+                    }
+
+                    .flyout-title {
+                        text-decoration: none;
+                        color: #333;
+                        font-size: 16px;
+                        font-weight: 500;
+                        flex: 1;
+                        transition: color 0.3s ease;
+
+                        &:hover {
+                            color: #000;
+                        }
+                    }
+
+                    .expand-icon {
+                        width: 20px;
+                        height: 20px;
+                        transition: transform 0.3s ease;
+                        margin-left: 8px;
+
+                        &.rotated {
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+
+                .flyout-submenu {
+                    background-color: #fafafa;
+                    animation: slideDown 0.3s ease;
+
+                    .flyout-submenu-item {
+                        display: block;
+                        padding: 12px 16px;
+                        padding-left: 32px;
+                        text-decoration: none;
+                        color: #555;
+                        font-size: 14px;
+                        font-weight: 400;
+                        border-left: 3px solid transparent;
+                        transition: all 0.2s ease;
+
+                        &:hover {
+                            background-color: #f0f0f0;
+                            color: #000;
+                            border-left-color: #007bdd;
+                            padding-left: 36px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .accordion-container {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .accordion-item {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: #fff;
+
+            .accordion-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 12px 16px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                background-color: #f9f9f9;
+                border-bottom: 4px solid transparent;
+
+                &:hover {
+                    background-color: #f0f0f0;
+                }
+
+                &.expanded {
+                    background-color: #e8e8e8;
+                    border-bottom-color: #007bdd;
+                }
+
+                .accordion-title {
+                    text-decoration: none;
+                    color: #333;
+                    font-size: 16px;
+                    font-weight: 500;
+                    flex: 1;
+                    text-align: left;
+                    transition: color 0.3s ease;
+
+                    &:hover {
+                        color: #000;
+                    }
+                }
+
+                .expand-icon {
+                    width: 20px;
+                    height: 20px;
+                    transition: transform 0.3s ease;
+                    margin-left: 12px;
+
+                    &.rotated {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+
+            .accordion-content {
+                padding: 0;
+                background-color: #fafafa;
+                animation: slideDown 0.3s ease;
+
+                .submenu-item {
+                    display: block;
+                    padding: 12px 16px;
+                    padding-left: 32px;
+                    text-decoration: none;
+                    color: #555;
+                    font-size: 14px;
+                    font-weight: 400;
+                    border-left: 3px solid transparent;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        background-color: #f0f0f0;
+                        color: #000;
+                        border-left-color: gray;
+                        padding-left: 36px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Animations
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+// Hide desktop on mobile
+@media (max-width: 767px) {
+    .navlist-container {
+        display: none;
+    }
+}
