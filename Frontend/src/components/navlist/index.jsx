@@ -15,9 +15,13 @@ const NavList = () => {
             link: "/about",
             icon: true,
             submenu: [
-                { name: "Overview", link: "/about/overview" },
-                { name: "History", link: "/about/history" },
-                { name: "Vision & Mission", link: "/about/vision" }
+                { name: "Why Kit", link: "/about/whykit" },
+                { name: "AboutUs", link: "/about/aboutus" },
+                { name: "AICTE", link: "/about/aicte" },
+                { name: "AISHE", link: "/about/aishe" },
+                { name: "GovtResolution", link: "/about/govtresolution" },
+                { name: "University", link: "/about/university" },
+
             ]
         },
         {
@@ -25,35 +29,60 @@ const NavList = () => {
             link: "/departments",
             icon: true,
             submenu: [
-                { name: "Engineering", link: "/departments/engineering" },
-                { name: "Science", link: "/departments/science" },
-                { name: "Commerce", link: "/departments/commerce" }
+                { name: "General Science", link: "/departments/generalscience" },
+                { name: "Computer Science", link: "/departments/computer-science" },
+                { name: "Electronics & Telecommunication", link: "/departments/electronics-telecommunication" },
+                { name: "Mechanical Engineering", link: "/departments/mechanical-engineering" },
+                { name: "Civil Engineering", link: "/departments/civil-engineering" }
             ]
         },
         {
             name: "Admissions",
             link: "/admissions",
             icon: true,
+
             submenu: [
-                { name: "Apply Now", link: "/admissions/apply" },
-                { name: "Requirements", link: "/admissions/requirements" }
+                { name: "Admission Process", link: "/admissions/admission-process" },
+                { name: "Fee Structure", link: "/admissions/FeeStructure" },
+                { name: "Requirements", link: "/admissions/requirements" },
+                { name: "Eligibility Criteria", link: "/admissions/eligibility-criteria" },
+                { name: "Intake", link: "/admissions/intake" },
+                { name: "FY_DSY_CAP", link: "/admissions/fy-dsy-cap" },
+                { name: "FY_DSY_NON_CAP", link: "/admissions/fy-dsy-non-cap" }
             ]
         },
-        { name: "Courses", link: "/courses", icon: true, submenu: [] },
-        { name: "NAAC", link: "/naac", icon: true, submenu: [] },
+        {
+            name: "NAAC",
+            link: "/naac",
+            icon: true,
+            submenu: [
+                { name: "Academic Calender", link: "/academic-calender", icon: true, submenu: [] },
+                { name: "Accreditation", link: "/accreditation", icon: true, submenu: [] },
+                { name: "Audit Statement", link: "/audit-statement", icon: true, submenu: [] }
+            ]
+        },
         {
             name: "Academics",
             link: "/academics",
             icon: true,
             submenu: [
-                { name: "Calendar", link: "/academics/calendar" },
-                { name: "Syllabus", link: "/academics/syllabus" }
+                { name: "Academic Calendar", link: "/academics/calendar" },
+                { name: "NPTEL Course", link: "/academics/nptel" },
+                { name: "Rules Regulation", link: "/academics/RulesRegulation" }
             ]
         },
-        { name: "Facilities", link: "/facilities", icon: true, submenu: [] },
-        { name: "Placement", link: "/placement", icon: false, submenu: [] },
+        {
+            name: "Facilities",
+            link: "/facilities",
+            icon: true,
+            submenu: [{ name: "ATM", link: "/atm", icon: true, submenu: [] },
+            { name: "Library", link: "/library", icon: true, submenu: [] },
+            { name: "Gallery", link: "/Sports", icon: false, submenu: [] },
+            { name: "Workshop", link: "/Workshop", icon: false, submenu: [] },]
+        },
+        { name: "Contact Us", link: "/contactus", icon: false, submenu: [] },
         { name: "Gallery", link: "/gallery", icon: false, submenu: [] },
-        { name: "Contact", link: "/contact", icon: false, submenu: [] },
+
     ]
 
     useEffect(() => {
